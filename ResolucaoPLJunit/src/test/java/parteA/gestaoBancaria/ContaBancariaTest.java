@@ -11,6 +11,7 @@ class ContaBancariaTest {
     ContaBancaria conta2;
     ContaBancaria conta3;
     ContaBancaria conta4;
+    ContaBancaria conta5;
 
     @BeforeEach
     void setUp() {
@@ -18,6 +19,14 @@ class ContaBancariaTest {
         conta2 = new ContaBancaria("Joana", 0, 2022, "PT", "Pt500033 335");
         conta3 = new ContaBancaria("António", 2000, 1999, "PT", "Pt500044 669");
         conta4 = new ContaBancaria("Deolinda", 550, 2001, "ES", "ES400011 333");
+        conta5 = new ContaBancaria("José", 31, 2001, "ES", "ES400022 333");
+    }
+
+    @Test
+    public void testComDerivacao() {
+        conta5.aplicarRendimentoMensal(0.015);
+        assertEquals(30.465, conta5.consultarSaldo(), 0.001);
+
     }
 
     @Test
@@ -133,9 +142,9 @@ class ContaBancariaTest {
     }
 
     @Test
-    public void testGerarResumoConta(){
-        assertEquals("Titular: Joaquim, IBAN: Pt500011 123, País: PT, AnoCriação: 2026, Saldo: 0.0",conta1.gerarResumoConta());
-        assertEquals("Titular: Deolinda, IBAN: ES400011 333, País: ES, AnoCriação: 2001, Saldo: 550.0",conta4.gerarResumoConta());
+    public void testGerarResumoConta() {
+        assertEquals("Titular: Joaquim, IBAN: Pt500011 123, País: PT, AnoCriação: 2026, Saldo: 0.0", conta1.gerarResumoConta());
+        assertEquals("Titular: Deolinda, IBAN: ES400011 333, País: ES, AnoCriação: 2001, Saldo: 550.0", conta4.gerarResumoConta());
     }
 
 
